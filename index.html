@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aurora" data-mode="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TokenForge — Master Theme System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=Cabinet+Grotesk:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&family=Unbounded:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   TOKEN SYSTEM (AURORA + DARK VARIANT)
+   ═══════════════════════════════════════════════ */
+:root {
+  --space-1: clamp(2px,.4vw,4px); --space-2: clamp(4px,.7vw,8px); --space-3: clamp(6px,1vw,12px);
+  --space-4: clamp(10px,1.4vw,16px); --space-5: clamp(12px,1.6vw,20px); --space-6: clamp(16px,2vw,24px);
+  --space-8: clamp(20px,2.5vw,32px); --space-10: clamp(28px,3vw,40px); --space-12: clamp(32px,4vw,48px);
+  --space-16: clamp(40px,5vw,64px); --space-20: clamp(48px,6vw,80px); --space-24: clamp(56px,7vw,96px);
+  --space-32: clamp(64px,9vw,128px);
+  --text-2xs: clamp(9px,1.8vw,10px); --text-xs: clamp(10px,2vw,12px); --text-sm: clamp(12px,2.2vw,14px);
+  --text-base: clamp(14px,2.5vw,16px); --text-md: clamp(16px,2.8vw,18px); --text-lg: clamp(17px,3vw,20px);
+  --text-xl: clamp(19px,3.5vw,24px); --text-2xl: clamp(22px,4vw,28px); --text-3xl: clamp(26px,4.5vw,32px);
+  --text-4xl: clamp(30px,5.5vw,40px); --text-5xl: clamp(36px,6.5vw,48px); --text-6xl: clamp(44px,8vw,60px);
+  --text-7xl: clamp(52px,10vw,72px); --text-8xl: clamp(64px,12vw,96px);
+  --radius-sm: clamp(2px,.5vw,4px); --radius-md: clamp(4px,.8vw,8px); --radius-lg: clamp(8px,1.2vw,12px);
+  --radius-xl: clamp(10px,1.5vw,16px); --radius-2xl: clamp(14px,2vw,20px); --radius-3xl: clamp(18px,2.5vw,28px);
+  --radius-full: 9999px; --card-radius: clamp(10px,2vw,20px); --card-padding: clamp(16px,3vw,32px);
+  --container-padding: clamp(20px,5vw,80px); --container-max: 1340px; --header-height: clamp(52px,8vw,72px);
+  --btn-height-sm: clamp(28px,5vw,32px); --btn-height-md: clamp(36px,6vw,44px); --btn-height-lg: clamp(44px,7vw,52px);
+  --input-height-md: clamp(38px,6vw,44px);
+  --font-display: 'Playfair Display', Georgia, serif; --font-heading: 'Sora', system-ui, sans-serif;
+  --font-body: 'Lora', Georgia, serif; --font-ui: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --weight-light:300; --weight-regular:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700; --weight-black:900;
+  --leading-tight:1.2; --leading-snug:1.35; --leading-normal:1.5; --leading-relaxed:1.65;
+  --tracking-tight:-0.02em; --tracking-normal:0em; --tracking-wide:0.04em; --tracking-widest:0.12em;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-2: 0 2px 6px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --shadow-3: 0 8px 16px rgba(0,0,0,.10),0 2px 4px rgba(0,0,0,.06);
+  --shadow-4: 0 16px 32px rgba(0,0,0,.12),0 4px 8px rgba(0,0,0,.06);
+  --shadow-5: 0 24px 48px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.08);
+  --ease-out: cubic-bezier(0,0,.2,1); --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --ease-in-out: cubic-bezier(.4,0,.2,1); --dur-fast:150ms; --dur-normal:250ms; --dur-slow:400ms;
+  --z-dropdown:100; --z-modal:600; --z-toast:800; --z-tooltip:900; --z-top:1000;
+  --opacity-disabled:.40; --border-1:1px; --border-2:2px;
+}
+
+/* AURORA LIGHT */
+[data-theme="aurora"][data-mode="light"] {
+  --color-bg-base:#f0f4f8; --color-bg-subtle:#e8eef5; --color-bg-muted:#dce6f0;
+  --color-surface-1:#ffffff; --color-surface-2:#f7f9fc; --color-surface-3:#eef2f8; --color-surface-4:#e4eaf4;
+  --color-text-primary:#1a2233; --color-text-secondary:#4a5568; --color-text-tertiary:#718096;
+  --color-text-disabled:#a0aec0; --color-text-inverse:#ffffff; --color-text-link:#4a6fa5;
+  --color-brand:#4a6fa5; --color-brand-hover:#3a5a8a; --color-brand-active:#2c4570;
+  --color-brand-subtle:#e8eff8; --color-brand-muted:#d0dff0;
+  --color-accent:#7fb5c8; --color-accent-hover:#5fa0b8;
+  --color-success:#38a169; --color-warning:#d69e2e; --color-danger:#e53e3e; --color-info:#3182ce;
+  --color-border-base:#cbd5e0; --color-border-subtle:#e2e8f0; --color-border-strong:#a0aec0;
+  --color-border-focus:#4a6fa5; --color-state-hover:rgba(74,111,165,.07); --color-state-active:rgba(74,111,165,.14);
+  --shadow-brand:0 8px 24px rgba(74,111,165,.25);
+  --gradient-hero:linear-gradient(135deg,#e8eff8 0%,#f0f7ff 50%,#e8f4f8 100%);
+  --gradient-card:linear-gradient(145deg,#ffffff,#f0f4f8);
+  --gradient-accent:linear-gradient(135deg,#4a6fa5,#7fb5c8);
+  --color-scrollbar-thumb:#c0cfe0; --color-selection-bg:#d0dff0;
+}
+
+/* AURORA DARK */
+[data-theme="aurora"][data-mode="dark"] {
+  --color-bg-base:#0d1117; --color-bg-subtle:#141c26; --color-bg-muted:#1a2436;
+  --color-surface-1:#161e2e; --color-surface-2:#1c2740; --color-surface-3:#243050; --color-surface-4:#2c3a60;
+  --color-text-primary:#e8f0f8; --color-text-secondary:#90aac8; --color-text-tertiary:#607090;
+  --color-text-disabled:#3a4a60; --color-text-inverse:#0d1117; --color-text-link:#7fb5e8;
+  --color-brand:#5a8fcf; --color-brand-hover:#7aaae0; --color-brand-active:#9ac5f0;
+  --color-brand-subtle:rgba(90,143,207,.12); --color-brand-muted:rgba(90,143,207,.22);
+  --color-accent:#64b0c8; --color-accent-hover:#84c8e0;
+  --color-success:#48bb78; --color-warning:#ecc94b; --color-danger:#fc8181; --color-info:#63b3ed;
+  --color-border-base:#2a3a54; --color-border-subtle:#1e2c42; --color-border-strong:#3a5070;
+  --color-border-focus:#5a8fcf; --color-state-hover:rgba(90,143,207,.10); --color-state-active:rgba(90,143,207,.18);
+  --shadow-brand:0 8px 32px rgba(90,143,207,.30);
+  --gradient-hero:linear-gradient(135deg,#0d1117 0%,#141c2e 50%,#0f1622 100%);
+  --gradient-card:linear-gradient(145deg,#161e2e,#1c2740);
+  --gradient-accent:linear-gradient(135deg,#5a8fcf,#64b0c8);
+  --color-scrollbar-thumb:#2a3a54; --color-selection-bg:rgba(90,143,207,.28);
+}
+
+/* EMBER LIGHT */
+[data-theme="ember"][data-mode="light"] {
+  --color-bg-base:#fdf8f2; --color-bg-subtle:#f9f0e4; --color-bg-muted:#f4e6d4;
+  --color-surface-1:#ffffff; --color-surface-2:#fdf5ec; --color-surface-3:#f9ede0; --color-surface-4:#f4e4d0;
+  --color-text-primary:#2a1810; --color-text-secondary:#6b3d28; --color-text-tertiary:#9c6444;
+  --color-text-disabled:#c9a080; --color-text-inverse:#fdf8f2; --color-text-link:#c05621;
+  --color-brand:#c05621; --color-brand-hover:#a04418; --color-brand-active:#7c3412;
+  --color-brand-subtle:#fef0e6; --color-brand-muted:#fde0cc;
+  --color-accent:#d4a843; --color-accent-hover:#b88e30;
+  --color-success:#276749; --color-warning:#c05621; --color-danger:#9b2335; --color-info:#2c5282;
+  --color-border-base:#e8d0b8; --color-border-subtle:#f0dcc8; --color-border-strong:#c8a888;
+  --color-border-focus:#c05621; --color-state-hover:rgba(192,86,33,.06); --color-state-active:rgba(192,86,33,.12);
+  --shadow-brand:0 8px 24px rgba(192,86,33,.28);
+  --gradient-hero:linear-gradient(135deg,#fdf8f2 0%,#fdf0e4 50%,#faf0e0 100%);
+  --gradient-card:linear-gradient(145deg,#ffffff,#fdf5ec);
+  --gradient-accent:linear-gradient(135deg,#c05621,#d4a843);
+  --color-scrollbar-thumb:#e0c0a0; --color-selection-bg:#fde0cc;
+}
+
+/* EMBER DARK */
+[data-theme="ember"][data-mode="dark"] {
+  --color-bg-base:#120a05; --color-bg-subtle:#1e1008; --color-bg-muted:#2a180e;
+  --color-surface-1:#1a0e07; --color-surface-2:#261508; --color-surface-3:#34200f; --color-surface-4:#422a18;
+  --color-text-primary:#f8ede0; --color-text-secondary:#c8906a; --color-text-tertiary:#886040;
+  --color-text-disabled:#4a3020; --color-text-inverse:#120a05; --color-text-link:#f09050;
+  --color-brand:#e0703a; --color-brand-hover:#f08040; --color-brand-active:#ff9050;
+  --color-brand-subtle:rgba(224,112,58,.12); --color-brand-muted:rgba(224,112,58,.22);
+  --color-accent:#e8c060; --color-accent-hover:#f0d070;
+  --color-success:#48bb78; --color-warning:#f59e0b; --color-danger:#fc8181; --color-info:#63b3ed;
+  --color-border-base:#3a2214; --color-border-subtle:#2a180a; --color-border-strong:#5a3824;
+  --color-border-focus:#e0703a; --color-state-hover:rgba(224,112,58,.10); --color-state-active:rgba(224,112,58,.18);
+  --shadow-brand:0 8px 32px rgba(224,112,58,.30);
+  --gradient-hero:linear-gradient(135deg,#120a05 0%,#1e1008 50%,#160c06 100%);
+  --gradient-card:linear-gradient(145deg,#1a0e07,#261508);
+  --gradient-accent:linear-gradient(135deg,#e0703a,#e8c060);
+  --color-scrollbar-thumb:#3a2214; --color-selection-bg:rgba(224,112,58,.28);
+}
+
+/* VERDANT LIGHT */
+[data-theme="verdant"][data-mode="light"] {
+  --color-bg-base:#f2f7f2; --color-bg-subtle:#e8f2e8; --color-bg-muted:#d8ecd8;
+  --color-surface-1:#ffffff; --color-surface-2:#f5faf5; --color-surface-3:#eaf4ea; --color-surface-4:#ddeedd;
+  --color-text-primary:#1a2e1a; --color-text-secondary:#3d5c3d; --color-text-tertiary:#618061;
+  --color-text-disabled:#a0c0a0; --color-text-inverse:#f2f7f2; --color-text-link:#2d6a2d;
+  --color-brand:#2d6a2d; --color-brand-hover:#1f5020; --color-brand-active:#143814;
+  --color-brand-subtle:#e8f4e8; --color-brand-muted:#d0ead0;
+  --color-accent:#7ab87a; --color-accent-hover:#5a9a5a;
+  --color-success:#276749; --color-warning:#b7791f; --color-danger:#c53030; --color-info:#2b6cb0;
+  --color-border-base:#c0d8c0; --color-border-subtle:#d8ecd8; --color-border-strong:#90b890;
+  --color-border-focus:#2d6a2d; --color-state-hover:rgba(45,106,45,.07); --color-state-active:rgba(45,106,45,.14);
+  --shadow-brand:0 8px 24px rgba(45,106,45,.22);
+  --gradient-hero:linear-gradient(135deg,#f2f7f2 0%,#edf6ed 50%,#f0f8f0 100%);
+  --gradient-card:linear-gradient(145deg,#ffffff,#f5faf5);
+  --gradient-accent:linear-gradient(135deg,#2d6a2d,#7ab87a);
+  --color-scrollbar-thumb:#b0d0b0; --color-selection-bg:#d0ead0;
+}
+
+/* CYBERPUNK DARK */
+[data-theme="cyberpunk"][data-mode="dark"] {
+  --color-bg-base:#000000; --color-bg-subtle:#09090b; --color-bg-muted:#18181b;
+  --color-surface-1:#000000; --color-surface-2:#09090b; --color-surface-3:#18181b; --color-surface-4:#27272a;
+  --color-text-primary:#fef08a; --color-text-secondary:#fde047; --color-text-tertiary:#facc15;
+  --color-text-disabled:#71717a; --color-text-inverse:#000000; --color-text-link:#f472b6;
+  --color-brand:#fef08a; --color-brand-hover:#fde047; --color-brand-active:#facc15;
+  --color-brand-subtle:rgba(254,240,138,.15); --color-brand-muted:rgba(254,240,138,.25);
+  --color-accent:#22d3ee; --color-accent-hover:#67e8f9;
+  --color-success:#4ade80; --color-warning:#fb923c; --color-danger:#f87171; --color-info:#38bdf8;
+  --color-border-base:#27272a; --color-border-subtle:#18181b; --color-border-strong:#3f3f46;
+  --color-border-focus:#fef08a; --color-state-hover:rgba(254,240,138,.1); --color-state-active:rgba(254,240,138,.2);
+  --shadow-brand:4px 4px 0 #fef08a;
+  --gradient-hero:linear-gradient(135deg,#000000 0%,#09090b 50%,#18181b 100%);
+  --gradient-card:linear-gradient(145deg,#000000,#09090b);
+  --gradient-accent:linear-gradient(135deg,#fef08a,#22d3ee);
+  --color-scrollbar-thumb:#3f3f46; --color-selection-bg:rgba(254,240,138,.3);
+}
+
+/* SAKURA LIGHT */
+[data-theme="sakura"][data-mode="light"] {
+  --color-bg-base:#fdf5f7; --color-bg-subtle:#faecf0; --color-bg-muted:#f5e0e8;
+  --color-surface-1:#ffffff; --color-surface-2:#fdf0f4; --color-surface-3:#fae4ec; --color-surface-4:#f5d8e4;
+  --color-text-primary:#2d1a22; --color-text-secondary:#6b3a50; --color-text-tertiary:#9c6878;
+  --color-text-disabled:#d0a0b0; --color-text-inverse:#fdf5f7; --color-text-link:#b83060;
+  --color-brand:#b83060; --color-brand-hover:#941848; --color-brand-active:#700835;
+  --color-brand-subtle:#fdeef4; --color-brand-muted:#fbd8e8;
+  --color-accent:#e897b0; --color-accent-hover:#d07898;
+  --color-success:#2f855a; --color-warning:#c05621; --color-danger:#9b2335; --color-info:#2c5282;
+  --color-border-base:#e8c8d4; --color-border-subtle:#f0d8e4; --color-border-strong:#c898b0;
+  --color-border-focus:#b83060; --color-state-hover:rgba(184,48,96,.06); --color-state-active:rgba(184,48,96,.12);
+  --shadow-brand:0 8px 24px rgba(184,48,96,.24);
+  --gradient-hero:linear-gradient(135deg,#fdf5f7 0%,#faedf2 50%,#fdf0f5 100%);
+  --gradient-card:linear-gradient(145deg,#ffffff,#fdf0f4);
+  --gradient-accent:linear-gradient(135deg,#b83060,#e897b0);
+  --color-scrollbar-thumb:#e0b0c4; --color-selection-bg:#fbd8e8;
+}
+
+/* ═══════════════════════════════════════════════
+   GLOBAL RESET & BASE
+   ═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 100%; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  line-height: var(--leading-normal);
+  font-size: var(--text-base);
+  min-height: 100vh;
+  transition: background-color var(--dur-slow) var(--ease-in-out), color var(--dur-slow) var(--ease-in-out);
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-selection-bg); color: var(--color-text-primary); }
+* { scrollbar-width: thin; scrollbar-color: var(--color-scrollbar-thumb) transparent; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-scrollbar-thumb); border-radius: 9999px; }
+:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+   ═══════════════════════════════════════════════ */
+.navbar {
+  position: sticky; top: 0; z-index: var(--z-top);
+  height: var(--header-height);
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--container-padding);
+  background: var(--color-surface-1);
+  border-bottom: 1px solid var(--color-border-subtle);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  transition: background var(--dur-slow) var(--ease-in-out), border-color var(--dur-slow) var(--ease-in-out);
+}
+
+.navbar-brand {
+  display: flex; align-items: center; gap: var(--space-3);
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 34px; height: 34px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: white;
+  box-shadow: var(--shadow-brand);
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.brand-name span { color: var(--color-brand); }
+
+.navbar-nav {
+  display: flex; align-items: center; gap: var(--space-1);
+  list-style: none;
+}
+
+.nav-link {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.nav-link:hover { background: var(--color-state-hover); color: var(--color-text-primary); }
+
+.navbar-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.mode-btn {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-base);
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.mode-btn:hover { background: var(--color-state-hover); color: var(--color-text-primary); }
+
+/* ═══════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--space-2);
+  height: var(--btn-height-md);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui); font-size: var(--text-sm);
+  font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide);
+  border: 1px solid transparent; cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+  text-decoration: none; white-space: nowrap; user-select: none;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--gradient-accent); color: var(--color-text-inverse);
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: var(--shadow-4); }
+
+.btn-secondary {
+  background: var(--color-surface-3); color: var(--color-text-primary);
+  border-color: var(--color-border-base);
+}
+.btn-secondary:hover { background: var(--color-surface-4); }
+
+.btn-outline {
+  background: transparent; color: var(--color-brand); border-color: var(--color-brand);
+}
+.btn-outline:hover { background: var(--color-brand-subtle); }
+
+.btn-ghost {
+  background: transparent; color: var(--color-text-secondary);
+}
+.btn-ghost:hover { background: var(--color-state-hover); color: var(--color-text-primary); }
+
+.btn-sm { height: var(--btn-height-sm); padding: 0 var(--space-4); font-size: var(--text-xs); }
+.btn-lg { height: var(--btn-height-lg); padding: 0 var(--space-8); font-size: var(--text-md); }
+
+/* ═══════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: var(--space-20) var(--container-padding);
+  background: var(--gradient-hero);
+  position: relative; overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 40%, var(--color-brand-subtle) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, var(--color-brand-muted) 0%, transparent 70%);
+  opacity: 0.8;
+}
+
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  background-image:
+    linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+}
+
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 820px;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-brand-subtle);
+  border: 1px solid var(--color-brand-muted);
+  color: var(--color-brand);
+  padding: var(--space-1-5) var(--space-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  margin-bottom: var(--space-8);
+  animation: fade-slide-up .8s var(--ease-out) both;
+}
+
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-brand);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(1.3); }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-8xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  animation: fade-slide-up .9s .1s var(--ease-out) both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 58ch; margin: 0 auto var(--space-10);
+  line-height: var(--leading-relaxed);
+  animation: fade-slide-up 1s .2s var(--ease-out) both;
+}
+
+.hero-actions {
+  display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;
+  margin-bottom: var(--space-16);
+  animation: fade-slide-up 1s .3s var(--ease-out) both;
+}
+
+.hero-stats {
+  display: flex; gap: var(--space-12); justify-content: center; flex-wrap: wrap;
+  animation: fade-slide-up 1s .4s var(--ease-out) both;
+}
+
+.hero-stat {
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-1);
+}
+
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-brand);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute; bottom: var(--space-8); left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
+  color: var(--color-text-disabled);
+  animation: fade-slide-up 1s .6s var(--ease-out) both;
+}
+
+.scroll-hint-text { font-size: var(--text-2xs); font-family: var(--font-ui); letter-spacing: var(--tracking-widest); text-transform: uppercase; }
+
+.scroll-hint-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--color-brand), transparent);
+  animation: scroll-line 2s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0%,100% { opacity: .3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.7); }
+}
+
+@keyframes fade-slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION BASE
+   ═══════════════════════════════════════════════ */
+.section {
+  padding: var(--space-24) var(--container-padding);
+  max-width: var(--container-max); margin: 0 auto;
+}
+
+.section-inner {
+  max-width: var(--container-max); margin: 0 auto;
+}
+
+.section-label {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-brand); margin-bottom: var(--space-4);
+}
+
+.section-label-line {
+  width: 24px; height: 1px; background: var(--color-brand);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.section-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-12);
+}
+
+/* ═══════════════════════════════════════════════
+   THEME SWITCHER SECTION
+   ═══════════════════════════════════════════════ */
+.theme-section {
+  padding: var(--space-24) var(--container-padding);
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.theme-pills-wrap {
+  display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-10);
+}
+
+.theme-pill {
+  padding: var(--space-1-5) var(--space-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs); font-weight: var(--weight-medium);
+  cursor: pointer;
+  border: 1px solid var(--color-border-base);
+  background: var(--color-surface-1);
+  color: var(--color-text-secondary);
+  transition: all var(--dur-fast) var(--ease-out);
+  letter-spacing: var(--tracking-wide);
+}
+.theme-pill:hover { background: var(--color-state-hover); color: var(--color-text-primary); }
+.theme-pill.active {
+  background: var(--color-brand); color: var(--color-text-inverse); border-color: var(--color-brand);
+}
+
+/* ═══════════════════════════════════════════════
+   SHOWCASE GRID
+   ═══════════════════════════════════════════════ */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--space-5);
+}
+
+/* Card component */
+.card {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  position: relative; overflow: hidden;
+  transition: transform var(--dur-normal) var(--ease-spring),
+              box-shadow var(--dur-normal) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-4); border-color: var(--color-border-base); }
+
+.card-accent-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gradient-accent);
+}
+
+.card-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-xl);
+  background: var(--color-brand-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: var(--space-4); margin-top: var(--space-3);
+}
+
+.card h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-md); font-weight: var(--weight-semibold);
+  color: var(--color-text-primary); margin-bottom: var(--space-2);
+}
+
+.card p {
+  font-family: var(--font-body); font-size: var(--text-sm);
+  color: var(--color-text-secondary); line-height: var(--leading-relaxed);
+}
+
+.card-metric {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl); font-weight: var(--weight-bold);
+  color: var(--color-brand); line-height: 1;
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+/* ═══════════════════════════════════════════════
+   FEATURES SECTION
+   ═══════════════════════════════════════════════ */
+.features-bg {
+  background: var(--color-bg-base);
+  padding: var(--space-24) var(--container-padding);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: var(--space-6);
+}
+
+.feature-item {
+  display: flex; gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  transition: all var(--dur-normal) var(--ease-out);
+}
+.feature-item:hover { box-shadow: var(--shadow-3); border-color: var(--color-brand-muted); transform: translateY(-2px); }
+
+.feature-icon-wrap {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-xl);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: var(--shadow-brand);
+}
+
+.feature-text { flex: 1; }
+.feature-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-md); font-weight: var(--weight-semibold);
+  color: var(--color-text-primary); margin-bottom: var(--space-2);
+}
+.feature-desc {
+  font-family: var(--font-body); font-size: var(--text-sm);
+  color: var(--color-text-secondary); line-height: var(--leading-relaxed);
+}
+
+/* ═══════════════════════════════════════════════
+   COMPONENTS SHOWCASE
+   ═══════════════════════════════════════════════ */
+.components-bg {
+  padding: var(--space-24) var(--container-padding);
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.comp-panel {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.comp-panel-header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-2);
+  display: flex; align-items: center; gap: var(--space-3);
+}
+
+.comp-panel-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+
+.comp-panel-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs); color: var(--color-text-tertiary);
+  margin-left: auto;
+}
+
+.comp-panel-body {
+  padding: var(--space-8);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui); font-size: var(--text-xs);
+  font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide);
+  border: 1px solid transparent;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badge-brand   { background: var(--color-brand-muted); color: var(--color-brand); border-color: var(--color-brand-subtle); }
+.badge-success { background: rgba(39,103,73,.10); color: var(--color-success); }
+.badge-warning { background: rgba(180,83,9,.10); color: var(--color-warning); }
+.badge-danger  { background: rgba(155,35,53,.10); color: var(--color-danger); }
+.badge-info    { background: rgba(44,82,130,.10); color: var(--color-info); }
+.badge-neutral { background: var(--color-bg-muted); color: var(--color-text-secondary); }
+
+/* Alert */
+.alert {
+  display: flex; align-items: flex-start; gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-xl); border: 1px solid;
+  font-size: var(--text-sm); line-height: var(--leading-relaxed);
+  font-family: var(--font-ui);
+}
+.alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.alert-title { font-weight: var(--weight-semibold); margin-bottom: 2px; font-size: var(--text-sm); }
+.alert-body  { font-size: var(--text-xs); color: var(--color-text-secondary); }
+.alert-success { background: rgba(39,103,73,.08); border-color: var(--color-success); color: var(--color-success); }
+.alert-warning { background: rgba(192,86,33,.08); border-color: var(--color-warning); color: var(--color-warning); }
+.alert-danger  { background: rgba(155,35,53,.08); border-color: var(--color-danger); color: var(--color-danger); }
+.alert-info    { background: rgba(44,82,130,.08); border-color: var(--color-info); color: var(--color-info); }
+
+/* Progress */
+.progress-track {
+  height: 8px; border-radius: var(--radius-full);
+  background: var(--color-bg-muted); overflow: hidden;
+}
+.progress-fill {
+  height: 100%; border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+.progress-fill.s { background: var(--color-success); }
+.progress-fill.w { background: var(--color-warning); }
+.progress-fill.d { background: var(--color-danger); }
+
+/* Form */
+.form-label {
+  font-family: var(--font-ui); font-size: var(--text-xs);
+  font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide);
+  text-transform: uppercase; color: var(--color-text-secondary);
+  display: block; margin-bottom: var(--space-1-5);
+}
+.form-input {
+  width: 100%; height: var(--input-height-md);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-base);
+  background: var(--color-surface-1);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui); font-size: var(--text-sm);
+  transition: all var(--dur-fast) var(--ease-out); outline: none;
+}
+.form-input::placeholder { color: var(--color-text-tertiary); }
+.form-input:focus { border-color: var(--color-border-focus); box-shadow: 0 0 0 3px var(--color-brand-subtle); }
+
+/* Table */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-xl); border: 1px solid var(--color-border-subtle); }
+table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: var(--text-sm); }
+thead tr { background: var(--color-surface-2); border-bottom: 1px solid var(--color-border-base); }
+th {
+  padding: var(--space-3) var(--space-5);
+  text-align: left; font-size: var(--text-xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+tbody tr { border-bottom: 1px solid var(--color-border-subtle); transition: background var(--dur-fast) var(--ease-out); }
+tbody tr:hover { background: var(--color-state-hover); }
+tbody tr:last-child { border-bottom: none; }
+td { padding: var(--space-3) var(--space-5); color: var(--color-text-primary); vertical-align: middle; }
+
+/* Avatar */
+.avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gradient-accent);
+  color: white;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-ui); font-size: var(--text-xs); font-weight: var(--weight-semibold);
+  flex-shrink: 0;
+}
+.avatar-sm { width: 28px; height: 28px; font-size: var(--text-2xs); }
+.avatar-lg { width: 48px; height: 48px; font-size: var(--text-md); }
+
+/* Toggle */
+.toggle {
+  display: inline-flex; align-items: center; gap: var(--space-3); cursor: pointer;
+}
+.toggle input { display: none; }
+.toggle-track {
+  width: 40px; height: 22px; background: var(--color-bg-muted);
+  border-radius: var(--radius-full); position: relative;
+  transition: background var(--dur-normal) var(--ease-out); flex-shrink: 0;
+}
+.toggle-track::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 16px; height: 16px; background: #fff; border-radius: 50%;
+  box-shadow: var(--shadow-2); transition: transform var(--dur-normal) var(--ease-spring);
+}
+.toggle input:checked + .toggle-track { background: var(--color-brand); }
+.toggle input:checked + .toggle-track::after { transform: translateX(18px); }
+.toggle-label { font-size: var(--text-sm); color: var(--color-text-primary); user-select: none; }
+
+/* Skeleton */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-subtle) 25%, var(--color-bg-muted) 50%, var(--color-bg-subtle) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-md);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; } 100% { background-position: 200% 0; }
+}
+
+/* Chip */
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-1-5);
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border-base);
+  border-radius: var(--radius-full);
+  font-family: var(--font-ui); font-size: var(--text-xs);
+  font-weight: var(--weight-medium); color: var(--color-text-primary);
+}
+
+/* ═══════════════════════════════════════════════
+   TOKEN TABLE SECTION
+   ═══════════════════════════════════════════════ */
+.token-section { padding: var(--space-24) var(--container-padding); }
+
+.token-swatch {
+  width: 20px; height: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  display: inline-block; vertical-align: middle; flex-shrink: 0;
+}
+
+.token-name { color: var(--color-brand); font-family: var(--font-mono); font-size: var(--text-xs); }
+
+/* ═══════════════════════════════════════════════
+   SPACING SECTION
+   ═══════════════════════════════════════════════ */
+.space-section {
+  padding: var(--space-24) var(--container-padding);
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.space-bar-wrap { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-3); }
+.space-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-tertiary); width: 90px; flex-shrink: 0; }
+.space-track { flex: 1; background: var(--color-bg-muted); border-radius: var(--radius-full); height: 24px; overflow: hidden; }
+.space-fill { height: 100%; background: var(--gradient-accent); opacity: .7; border-radius: var(--radius-full); min-width: 4px; }
+.space-val { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-tertiary); width: 72px; text-align: right; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════
+   RADIUS & SHADOW SECTION
+   ═══════════════════════════════════════════════ */
+.visuals-section { padding: var(--space-24) var(--container-padding); }
+
+.radius-grid { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: flex-end; }
+.radius-box {
+  background: var(--gradient-accent); width: 72px; height: 72px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+.radius-box:hover { transform: scale(1.08); }
+.radius-label {
+  margin-top: var(--space-2); font-family: var(--font-mono);
+  font-size: var(--text-2xs); color: var(--color-text-tertiary); text-align: center;
+}
+
+.shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(140px,100%),1fr)); gap: var(--space-6); }
+.shadow-card {
+  height: 80px; border-radius: var(--radius-xl);
+  background: var(--color-surface-1);
+  display: flex; align-items: flex-end; padding: var(--space-2) var(--space-3);
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+.shadow-card:hover { transform: scale(1.04); }
+.shadow-card-label { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-tertiary); }
+
+/* ═══════════════════════════════════════════════
+   CTA SECTION
+   ═══════════════════════════════════════════════ */
+.cta-section {
+  padding: var(--space-24) var(--container-padding);
+  background: var(--gradient-accent);
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+
+.cta-bg-pattern {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+.cta-section h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl); font-weight: var(--weight-bold);
+  color: white; line-height: var(--leading-tight);
+  margin-bottom: var(--space-5);
+}
+
+.cta-section p {
+  font-family: var(--font-body); font-size: var(--text-lg);
+  color: rgba(255,255,255,.8); margin-bottom: var(--space-8); line-height: var(--leading-relaxed);
+}
+
+.btn-cta-light {
+  background: white; color: var(--color-brand);
+  border: none; font-weight: var(--weight-semibold);
+}
+.btn-cta-light:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+
+.btn-cta-ghost {
+  background: transparent; color: white;
+  border: 1px solid rgba(255,255,255,.4);
+}
+.btn-cta-ghost:hover { background: rgba(255,255,255,.12); }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--color-border-subtle);
+  padding: var(--space-10) var(--container-padding);
+  background: var(--color-bg-subtle);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);
+}
+
+.footer-brand {
+  display: flex; align-items: center; gap: var(--space-3);
+}
+
+.footer-copy {
+  font-family: var(--font-ui); font-size: var(--text-xs);
+  color: var(--color-text-tertiary); letter-spacing: var(--tracking-wide);
+}
+
+.footer-links {
+  display: flex; gap: var(--space-5); list-style: none;
+}
+
+.footer-link {
+  font-family: var(--font-ui); font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  text-decoration: none; letter-spacing: var(--tracking-wide);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.footer-link:hover { color: var(--color-brand); }
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHY SHOWCASE
+   ═══════════════════════════════════════════════ */
+.type-section {
+  padding: var(--space-24) var(--container-padding);
+  background: var(--color-bg-base);
+}
+
+.type-row {
+  display: grid; grid-template-columns: 120px 1fr;
+  align-items: baseline; gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.type-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-tertiary); }
+
+/* ═══════════════════════════════════════════════
+   COLOR SWATCH
+   ═══════════════════════════════════════════════ */
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(min(140px,100%),1fr)); gap: var(--space-3); }
+.swatch { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-border-subtle); transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-fast) var(--ease-out); }
+.swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-3); }
+.swatch-color { height: 64px; width: 100%; }
+.swatch-info { padding: var(--space-2) var(--space-3); background: var(--color-surface-1); }
+.swatch-name { font-family: var(--font-ui); font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--color-text-primary); }
+.swatch-token { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-tertiary); margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════ */
+.flex { display: flex; } .grid { display: grid; }
+.items-center { align-items: center; } .items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; } .justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; } .flex-col { flex-direction: column; }
+.gap-2 { gap: var(--space-2); } .gap-3 { gap: var(--space-3); } .gap-4 { gap: var(--space-4); }
+.gap-5 { gap: var(--space-5); } .gap-6 { gap: var(--space-6); } .gap-8 { gap: var(--space-8); }
+.gap-10 { gap: var(--space-10); } .gap-12 { gap: var(--space-12); }
+.mb-2 { margin-bottom: var(--space-2); } .mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); } .mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); } .mb-10 { margin-bottom: var(--space-10); }
+.mb-12 { margin-bottom: var(--space-12); }
+.mt-2 { margin-top: var(--space-2); } .mt-4 { margin-top: var(--space-4); }
+.ml-auto { margin-left: auto; }
+.text-center { text-align: center; } .text-right { text-align: right; }
+.w-full { width: 100%; } .max-w-container { max-width: var(--container-max); margin: 0 auto; }
+.relative { position: relative; } .overflow-hidden { overflow: hidden; }
+.rounded-full { border-radius: var(--radius-full); }
+code {
+  font-family: var(--font-mono); font-size: var(--text-sm);
+  background: var(--color-bg-muted); color: var(--color-brand);
+  padding: 2px 8px; border-radius: var(--radius-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-nav { display: none; }
+  .hero h1 { font-size: clamp(36px, 10vw, 60px); }
+  .hero-stats { gap: var(--space-8); }
+  .type-row { grid-template-columns: 80px 1fr; gap: var(--space-2); }
+  .footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .section-title { font-size: var(--text-4xl); }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-stats { flex-wrap: wrap; gap: var(--space-6); }
+  .cta-section .flex { flex-direction: column; align-items: center; }
+}
+
+/* Scroll reveal animation (JS enhanced) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════ -->
+<nav class="navbar">
+  <a href="#" class="navbar-brand">
+    <div class="brand-logo">⬡</div>
+    <span class="brand-name">Token<span>Forge</span></span>
+  </a>
+
+  <ul class="navbar-nav">
+    <li><a href="#themes" class="nav-link">Themes</a></li>
+    <li><a href="#components" class="nav-link">Components</a></li>
+    <li><a href="#tokens" class="nav-link">Tokens</a></li>
+    <li><a href="#typography" class="nav-link">Typography</a></li>
+    <li><a href="#spacing" class="nav-link">Spacing</a></li>
+  </ul>
+
+  <div class="navbar-actions">
+    <button class="mode-btn" id="modeBtn" title="Toggle dark mode">☾</button>
+    <a href="#" class="btn btn-primary btn-sm">Get SCSS ↓</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+     ═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Angular 21 · 25 Themes · 700+ Tokens
+    </div>
+
+    <h1>Every Token.<br><em>Every Theme.</em><br>One SCSS File.</h1>
+
+    <p class="hero-sub">
+      A production-ready design token system with 25 hand-crafted themes,
+      full light &amp; dark mode variants, fluid responsive scaling via
+      <code>clamp()</code>, and a comprehensive SCSS component library.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#components" class="btn btn-primary btn-lg">Explore Components</a>
+      <a href="#tokens" class="btn btn-ghost btn-lg">View Token Ref →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">25</span>
+        <span class="hero-stat-label">Themes</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">700+</span>
+        <span class="hero-stat-label">Tokens</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">30</span>
+        <span class="hero-stat-label">SCSS Sections</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">∞</span>
+        <span class="hero-stat-label">Combinations</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-hint-text">Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     THEME SWITCHER
+     ═══════════════════════════════════ -->
+<section class="theme-section" id="themes">
+  <div class="max-w-container">
+    <div class="reveal">
+      <div class="section-label"><span class="section-label-line"></span> Live Preview</div>
+      <h2 class="section-title mb-4">Switch Any Theme<br>Instantly</h2>
+      <p class="section-desc">All 25 themes swap via a single <code>data-theme</code> attribute. Every component, token, and gradient adapts automatically.</p>
+    </div>
+
+    <div class="theme-pills-wrap reveal reveal-delay-1" id="themePills">
+      <button class="theme-pill active" data-t="aurora">Aurora</button>
+      <button class="theme-pill" data-t="ember">Ember</button>
+      <button class="theme-pill" data-t="verdant">Verdant</button>
+      <button class="theme-pill" data-t="sakura">Sakura</button>
+      <button class="theme-pill" data-t="cyberpunk">Cyberpunk</button>
+    </div>
+
+    <!-- Live preview cards -->
+    <div class="showcase-grid reveal reveal-delay-2">
+      <div class="card">
+        <div class="card-accent-bar"></div>
+        <div class="card-icon">✦</div>
+        <h3>Design Tokens</h3>
+        <p>A single source of truth for every design decision across your product, from spacing to shadow.</p>
+      </div>
+      <div class="card">
+        <div class="card-accent-bar"></div>
+        <div class="card-metric">700+</div>
+        <h3>Total Tokens</h3>
+        <p>Covering every dimension of a design system — color, type, space, radius, shadow, motion.</p>
+      </div>
+      <div class="card">
+        <div class="card-accent-bar"></div>
+        <div class="card-icon">◈</div>
+        <h3>25 Themes</h3>
+        <p>Each with full light and dark mode. Switch with <code>data-theme</code> in one line.</p>
+      </div>
+      <div class="card">
+        <div class="card-accent-bar"></div>
+        <div class="card-icon">⟳</div>
+        <h3>Fluid Responsive</h3>
+        <p>All spacing, type and radii use fluid <code>clamp()</code> — adapts to every screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FEATURES
+     ═══════════════════════════════════ -->
+<section class="features-bg">
+  <div class="max-w-container">
+    <div class="reveal text-center mb-12">
+      <div class="section-label" style="justify-content:center;"><span class="section-label-line"></span> What's Inside <span class="section-label-line"></span></div>
+      <h2 class="section-title">Built for Production,<br>Designed for Scale</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item reveal">
+        <div class="feature-icon-wrap">🎨</div>
+        <div class="feature-text">
+          <div class="feature-title">Semantic Color System</div>
+          <div class="feature-desc">Brand, accent, surface, text, border and state colors — all semantic tokens that swap across 25 themes automatically.</div>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-1">
+        <div class="feature-icon-wrap">📐</div>
+        <div class="feature-text">
+          <div class="feature-title">Fluid Spacing Scale</div>
+          <div class="feature-desc">12 spacing steps using <code>clamp()</code> — from 2px to 128px. Adapts perfectly from mobile to 4K without breakpoints.</div>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-2">
+        <div class="feature-icon-wrap">🔤</div>
+        <div class="feature-text">
+          <div class="feature-title">Fluid Typography</div>
+          <div class="feature-desc">17 type sizes from <code>--text-2xs</code> to <code>--text-9xl</code>, all fluid. 5 font role tokens with per-theme font switching.</div>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon-wrap">🧩</div>
+        <div class="feature-text">
+          <div class="feature-title">30-Section SCSS Library</div>
+          <div class="feature-desc">Buttons, cards, forms, tables, badges, alerts, modals, nav, tabs, avatars, tooltips, dropdowns, skeletons and more.</div>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-1">
+        <div class="feature-icon-wrap">🌙</div>
+        <div class="feature-text">
+          <div class="feature-title">Dark Mode First</div>
+          <div class="feature-desc">Every theme ships with a hand-tuned dark mode variant. Toggle via <code>data-mode="dark"</code> — no extra CSS needed.</div>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-2">
+        <div class="feature-icon-wrap">⚡</div>
+        <div class="feature-text">
+          <div class="feature-title">Angular 21 Ready</div>
+          <div class="feature-desc">Pure CSS custom properties + SCSS. Drop the file into <code>angular.json</code> styles or <code>@use</code> in any component. Zero JS dependency.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     COMPONENTS SHOWCASE
+     ═══════════════════════════════════ -->
+<section class="components-bg" id="components">
+  <div class="max-w-container">
+    <div class="reveal">
+      <div class="section-label"><span class="section-label-line"></span> Components</div>
+      <h2 class="section-title mb-4">Every Component<br>Token-Driven</h2>
+      <p class="section-desc">All 30+ components from the SCSS library, rendered live with the currently active theme.</p>
+    </div>
+
+    <!-- Buttons Panel -->
+    <div class="comp-panel mb-8 reveal">
+      <div class="comp-panel-header">
+        <div class="comp-panel-dot" style="background:#ef4444"></div>
+        <div class="comp-panel-dot" style="background:#f59e0b"></div>
+        <div class="comp-panel-dot" style="background:#10b981"></div>
+        <span class="comp-panel-title">_button.scss</span>
+      </div>
+      <div class="comp-panel-body">
+        <div class="flex flex-wrap gap-3 mb-6">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-outline">Outline</button>
+          <button class="btn btn-ghost">Ghost</button>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Medium</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+          <button class="btn btn-primary" disabled style="opacity:.4;cursor:not-allowed">Disabled</button>
+          <button class="btn" style="background:var(--color-danger);color:#fff;">Danger</button>
+          <button class="btn" style="background:var(--color-success);color:#fff;">Success</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges + Alerts + Toggle Row -->
+    <div class="grid gap-6 mb-8" style="grid-template-columns: repeat(auto-fill,minmax(min(340px,100%),1fr))">
+
+      <!-- Badges -->
+      <div class="comp-panel reveal">
+        <div class="comp-panel-header">
+          <div class="comp-panel-dot" style="background:#ef4444"></div>
+          <div class="comp-panel-dot" style="background:#f59e0b"></div>
+          <div class="comp-panel-dot" style="background:#10b981"></div>
+          <span class="comp-panel-title">_badge.scss</span>
+        </div>
+        <div class="comp-panel-body flex flex-wrap gap-2">
+          <span class="badge badge-brand"><span class="badge-dot"></span>Brand</span>
+          <span class="badge badge-success"><span class="badge-dot"></span>Success</span>
+          <span class="badge badge-warning"><span class="badge-dot"></span>Warning</span>
+          <span class="badge badge-danger"><span class="badge-dot"></span>Danger</span>
+          <span class="badge badge-info"><span class="badge-dot"></span>Info</span>
+          <span class="badge badge-neutral">Neutral</span>
+        </div>
+      </div>
+
+      <!-- Toggles & Chips -->
+      <div class="comp-panel reveal reveal-delay-1">
+        <div class="comp-panel-header">
+          <div class="comp-panel-dot" style="background:#ef4444"></div>
+          <div class="comp-panel-dot" style="background:#f59e0b"></div>
+          <div class="comp-panel-dot" style="background:#10b981"></div>
+          <span class="comp-panel-title">_form.scss</span>
+        </div>
+        <div class="comp-panel-body">
+          <div class="flex flex-col gap-4 mb-4">
+            <label class="toggle">
+              <input type="checkbox" checked>
+              <div class="toggle-track"></div>
+              <span class="toggle-label">Notifications enabled</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox">
+              <div class="toggle-track"></div>
+              <span class="toggle-label">Dark mode sync</span>
+            </label>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip">Angular</span>
+            <span class="chip">SCSS</span>
+            <span class="chip">Tokens</span>
+            <span class="chip">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts Panel -->
+    <div class="comp-panel mb-8 reveal">
+      <div class="comp-panel-header">
+        <div class="comp-panel-dot" style="background:#ef4444"></div>
+        <div class="comp-panel-dot" style="background:#f59e0b"></div>
+        <div class="comp-panel-dot" style="background:#10b981"></div>
+        <span class="comp-panel-title">_alert.scss</span>
+      </div>
+      <div class="comp-panel-body flex flex-col gap-3">
+        <div class="alert alert-success">
+          <span class="alert-icon">✓</span>
+          <div><div class="alert-title">Deployment successful</div><div class="alert-body">Your build was deployed to production at 14:32 UTC.</div></div>
+        </div>
+        <div class="alert alert-warning">
+          <span class="alert-icon">⚠</span>
+          <div><div class="alert-title">Token deprecation warning</div><div class="alert-body">The <code>--color-primary</code> alias is deprecated. Use <code>--color-brand</code> instead.</div></div>
+        </div>
+        <div class="alert alert-danger">
+          <span class="alert-icon">✕</span>
+          <div><div class="alert-title">Build failed</div><div class="alert-body">SCSS compilation error on line 412. Check your variable references.</div></div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ</span>
+          <div><div class="alert-title">25 themes available</div><div class="alert-body">Switch themes using <code>data-theme="ember"</code> on the HTML element.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Panel -->
+    <div class="comp-panel mb-8 reveal">
+      <div class="comp-panel-header">
+        <div class="comp-panel-dot" style="background:#ef4444"></div>
+        <div class="comp-panel-dot" style="background:#f59e0b"></div>
+        <div class="comp-panel-dot" style="background:#10b981"></div>
+        <span class="comp-panel-title">_progress.scss</span>
+      </div>
+      <div class="comp-panel-body flex flex-col gap-5">
+        <div>
+          <div class="flex justify-between mb-2"><span style="font-family:var(--font-ui);font-size:var(--text-xs);color:var(--color-text-secondary)">Brand Progress</span><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-tertiary)">78%</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:78%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2"><span style="font-family:var(--font-ui);font-size:var(--text-xs);color:var(--color-text-secondary)">Success</span><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-tertiary)">92%</span></div>
+          <div class="progress-track"><div class="progress-fill s" style="width:92%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2"><span style="font-family:var(--font-ui);font-size:var(--text-xs);color:var(--color-text-secondary)">Warning</span><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-tertiary)">44%</span></div>
+          <div class="progress-track"><div class="progress-fill w" style="width:44%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2"><span style="font-family:var(--font-ui);font-size:var(--text-xs);color:var(--color-text-secondary)">Danger</span><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-tertiary)">17%</span></div>
+          <div class="progress-track"><div class="progress-fill d" style="width:17%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Panel -->
+    <div class="comp-panel mb-8 reveal">
+      <div class="comp-panel-header">
+        <div class="comp-panel-dot" style="background:#ef4444"></div>
+        <div class="comp-panel-dot" style="background:#f59e0b"></div>
+        <div class="comp-panel-dot" style="background:#10b981"></div>
+        <span class="comp-panel-title">_form.scss · inputs</span>
+      </div>
+      <div class="comp-panel-body">
+        <div class="grid gap-5" style="grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))">
+          <div>
+            <label class="form-label">Full name</label>
+            <input class="form-input" type="text" placeholder="Manish Patel">
+          </div>
+          <div>
+            <label class="form-label">Email address</label>
+            <input class="form-input" type="email" placeholder="name@example.com">
+          </div>
+          <div>
+            <label class="form-label">Project</label>
+            <input class="form-input" type="text" placeholder="Exam Prep Platform" value="Exam Prep Platform">
+          </div>
+          <div>
+            <label class="form-label">Error state</label>
+            <input class="form-input" type="text" value="Invalid entry" style="border-color:var(--color-danger);box-shadow:0 0 0 3px rgba(220,38,38,.1)">
+            <span style="font-size:var(--text-xs);color:var(--color-danger);display:block;margin-top:4px">⚠ This field is required</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Panel -->
+    <div class="comp-panel mb-8 reveal">
+      <div class="comp-panel-header">
+        <div class="comp-panel-dot" style="background:#ef4444"></div>
+        <div class="comp-panel-dot" style="background:#f59e0b"></div>
+        <div class="comp-panel-dot" style="background:#10b981"></div>
+        <span class="comp-panel-title">_table.scss</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Role</th>
+              <th>Score</th>
+              <th>Status</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm">MA</div>
+                  <span>Manish Anand</span>
+                </div>
+              </td>
+              <td>Admin</td>
+              <td style="font-family:var(--font-mono);font-size:var(--text-xs)">98.4</td>
+              <td><span class="badge badge-success"><span class="badge-dot"></span>Active</span></td>
+              <td style="color:var(--color-text-tertiary);font-size:var(--text-xs)">Jan 12, 2025</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm" style="background:var(--gradient-accent)">PR</div>
+                  <span>Priya Rao</span>
+                </div>
+              </td>
+              <td>Developer</td>
+              <td style="font-family:var(--font-mono);font-size:var(--text-xs)">87.1</td>
+              <td><span class="badge badge-brand"><span class="badge-dot"></span>Pro</span></td>
+              <td style="color:var(--color-text-tertiary);font-size:var(--text-xs)">Mar 8, 2025</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm" style="background:linear-gradient(135deg,var(--color-warning),var(--color-accent))">AK</div>
+                  <span>Arjun Kumar</span>
+                </div>
+              </td>
+              <td>Viewer</td>
+              <td style="font-family:var(--font-mono);font-size:var(--text-xs)">61.3</td>
+              <td><span class="badge badge-warning"><span class="badge-dot"></span>Trial</span></td>
+              <td style="color:var(--color-text-tertiary);font-size:var(--text-xs)">Jun 3, 2025</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-sm" style="background:linear-gradient(135deg,var(--color-danger),var(--color-warning))">NK</div>
+                  <span>Neha Kapoor</span>
+                </div>
+              </td>
+              <td>Designer</td>
+              <td style="font-family:var(--font-mono);font-size:var(--text-xs)">—</td>
+              <td><span class="badge badge-neutral">Inactive</span></td>
+              <td style="color:var(--color-text-tertiary);font-size:var(--text-xs)">Aug 21, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Skeleton Panel -->
+    <div class="comp-panel reveal">
+      <div class="comp-panel-header">
+        <div class="comp-panel-dot" style="background:#ef4444"></div>
+        <div class="comp-panel-dot" style="background:#f59e0b"></div>
+        <div class="comp-panel-dot" style="background:#10b981"></div>
+        <span class="comp-panel-title">_skeleton.scss · _avatar.scss</span>
+      </div>
+      <div class="comp-panel-body">
+        <div class="grid gap-5" style="grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))">
+          <!-- Skeleton card -->
+          <div class="flex flex-col gap-3">
+            <div class="skeleton" style="height:120px;border-radius:var(--radius-xl)"></div>
+            <div class="flex gap-3 items-center">
+              <div class="skeleton" style="width:40px;height:40px;border-radius:50%;flex-shrink:0"></div>
+              <div style="flex:1">
+                <div class="skeleton" style="height:12px;border-radius:var(--radius-sm);width:70%;margin-bottom:8px"></div>
+                <div class="skeleton" style="height:10px;border-radius:var(--radius-sm);width:45%"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Avatar group -->
+          <div class="flex flex-col gap-5">
+            <div>
+              <div style="font-family:var(--font-ui);font-size:var(--text-xs);color:var(--color-text-tertiary);margin-bottom:var(--space-3);letter-spacing:var(--tracking-wide);text-transform:uppercase;">Avatar Sizes</div>
+              <div class="flex items-center gap-3">
+                <div class="avatar" style="width:24px;height:24px;font-size:9px">XS</div>
+                <div class="avatar avatar-sm">SM</div>
+                <div class="avatar">MD</div>
+                <div class="avatar avatar-lg">LG</div>
+                <div class="avatar" style="width:56px;height:56px;font-size:var(--text-md)">XL</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-ui);font-size:var(--text-xs);color:var(--color-text-tertiary);margin-bottom:var(--space-3);letter-spacing:var(--tracking-wide);text-transform:uppercase;">Avatar Group</div>
+              <div class="flex" style="gap:0">
+                <div class="avatar" style="border:2px solid var(--color-surface-1);margin-left:0">A</div>
+                <div class="avatar" style="border:2px solid var(--color-surface-1);margin-left:-10px;background:linear-gradient(135deg,var(--color-warning),var(--color-accent))">B</div>
+                <div class="avatar" style="border:2px solid var(--color-surface-1);margin-left:-10px;background:linear-gradient(135deg,var(--color-danger),var(--color-warning))">C</div>
+                <div class="avatar" style="border:2px solid var(--color-surface-1);margin-left:-10px;background:var(--color-bg-muted);color:var(--color-text-secondary)">+5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     TOKEN REFERENCE TABLE
+     ═══════════════════════════════════ -->
+<section class="token-section" id="tokens">
+  <div class="max-w-container">
+    <div class="reveal">
+      <div class="section-label"><span class="section-label-line"></span> Token Reference</div>
+      <h2 class="section-title mb-4">Live Token Values</h2>
+      <p class="section-desc">All tokens read live from the current theme. Switch a theme above and watch the previews update.</p>
+    </div>
+
+    <!-- Color swatches -->
+    <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-5);" class="reveal">Color Tokens</h3>
+    <div class="swatch-grid mb-12 reveal reveal-delay-1">
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-bg-base)"></div><div class="swatch-info"><div class="swatch-name">Base BG</div><div class="swatch-token">--color-bg-base</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-surface-1)"></div><div class="swatch-info"><div class="swatch-name">Surface 1</div><div class="swatch-token">--color-surface-1</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-surface-2)"></div><div class="swatch-info"><div class="swatch-name">Surface 2</div><div class="swatch-token">--color-surface-2</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-brand)"></div><div class="swatch-info"><div class="swatch-name">Brand</div><div class="swatch-token">--color-brand</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-brand-subtle)"></div><div class="swatch-info"><div class="swatch-name">Brand Subtle</div><div class="swatch-token">--color-brand-subtle</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-accent)"></div><div class="swatch-info"><div class="swatch-name">Accent</div><div class="swatch-token">--color-accent</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-success)"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-token">--color-success</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-warning)"></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-token">--color-warning</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-danger)"></div><div class="swatch-info"><div class="swatch-name">Danger</div><div class="swatch-token">--color-danger</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-info)"></div><div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-token">--color-info</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-border-base)"></div><div class="swatch-info"><div class="swatch-name">Border Base</div><div class="swatch-token">--color-border-base</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--gradient-accent)"></div><div class="swatch-info"><div class="swatch-name">Gradient</div><div class="swatch-token">--gradient-accent</div></div></div>
+    </div>
+
+    <!-- Token table -->
+    <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-text-primary);margin-bottom:var(--space-5);" class="reveal">All Token Categories</h3>
+    <div class="table-wrap reveal reveal-delay-1">
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Category</th>
+            <th>Preview</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="token-name">--color-brand</td><td>Color</td><td><span class="token-swatch" style="background:var(--color-brand)"></span></td><td>Primary brand / action color</td></tr>
+          <tr><td class="token-name">--color-text-primary</td><td>Text</td><td><span class="token-swatch" style="background:var(--color-text-primary)"></span></td><td>Main readable text</td></tr>
+          <tr><td class="token-name">--color-surface-1</td><td>Surface</td><td><span class="token-swatch" style="background:var(--color-surface-1)"></span></td><td>Card and panel background</td></tr>
+          <tr><td class="token-name">--gradient-accent</td><td>Gradient</td><td><span class="token-swatch" style="background:var(--gradient-accent)"></span></td><td>Brand gradient (buttons, bars)</td></tr>
+          <tr><td class="token-name">--space-4</td><td>Spacing</td><td><div style="width:var(--space-4);height:12px;background:var(--color-brand);border-radius:2px"></div></td><td>Base unit, 10–16px fluid</td></tr>
+          <tr><td class="token-name">--text-base</td><td>Typography</td><td style="font-size:var(--text-base);font-family:var(--font-body)">Aa</td><td>Body font, 14–16px fluid</td></tr>
+          <tr><td class="token-name">--card-radius</td><td>Radius</td><td><div style="width:24px;height:16px;background:var(--color-brand);border-radius:var(--card-radius)"></div></td><td>Card corner radius</td></tr>
+          <tr><td class="token-name">--shadow-brand</td><td>Shadow</td><td><div style="width:24px;height:16px;background:var(--color-surface-1);box-shadow:var(--shadow-brand);border-radius:4px"></div></td><td>Brand-colored elevation</td></tr>
+          <tr><td class="token-name">--dur-normal</td><td>Motion</td><td><code>250ms</code></td><td>Standard transition duration</td></tr>
+          <tr><td class="token-name">--ease-spring</td><td>Motion</td><td><code>cubic-bezier</code></td><td>Bounce easing curve</td></tr>
+          <tr><td class="token-name">--font-display</td><td>Typography</td><td style="font-family:var(--font-display);font-weight:700">Aa</td><td>Display / hero typeface</td></tr>
+          <tr><td class="token-name">--font-mono</td><td>Typography</td><td style="font-family:var(--font-mono)">Aa</td><td>Code & data typeface</td></tr>
+          <tr><td class="token-name">--z-modal</td><td>Z-Index</td><td><code>600</code></td><td>Modal stack layer</td></tr>
+          <tr><td class="token-name">--opacity-disabled</td><td>Opacity</td><td><code>0.40</code></td><td>Disabled state opacity</td></tr>
+          <tr><td class="token-name">--radius-full</td><td>Radius</td><td><div style="width:36px;height:16px;background:var(--color-brand);border-radius:9999px"></div></td><td>Pill shape (9999px)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     TYPOGRAPHY SHOWCASE
+     ═══════════════════════════════════ -->
+<section class="type-section" id="typography">
+  <div class="max-w-container">
+    <div class="reveal">
+      <div class="section-label"><span class="section-label-line"></span> Typography</div>
+      <h2 class="section-title mb-4">Fluid Type Scale</h2>
+      <p class="section-desc">17 type sizes, all using <code>clamp()</code> for seamless scaling. 5 font role tokens that shift per theme.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="type-row">
+        <span class="type-label">display</span>
+        <span style="font-family:var(--font-display);font-size:var(--text-7xl);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--color-text-primary)">Grand Display</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">h1 · 5xl</span>
+        <h1 style="font-size:var(--text-5xl);font-weight:var(--weight-bold);color:var(--color-text-primary);font-family:var(--font-heading)">Heading One</h1>
+      </div>
+      <div class="type-row">
+        <span class="type-label">h2 · 4xl</span>
+        <h2 style="font-size:var(--text-4xl);font-weight:var(--weight-semibold);color:var(--color-text-primary);font-family:var(--font-heading)">Heading Two</h2>
+      </div>
+      <div class="type-row">
+        <span class="type-label">h3 · 3xl</span>
+        <h3 style="font-size:var(--text-3xl);font-weight:var(--weight-semibold);color:var(--color-text-primary);font-family:var(--font-heading)">Heading Three</h3>
+      </div>
+      <div class="type-row">
+        <span class="type-label">body-lg</span>
+        <p style="font-family:var(--font-body);font-size:var(--text-md);color:var(--color-text-secondary);line-height:var(--leading-relaxed)">Large body copy — designed for readability at comfortable reading distances with proper line height and generous spacing.</p>
+      </div>
+      <div class="type-row">
+        <span class="type-label">body</span>
+        <p style="font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text-secondary);line-height:var(--leading-relaxed)">Default body text. The workhorse of the type system, used across paragraphs, descriptions, and supporting copy.</p>
+      </div>
+      <div class="type-row">
+        <span class="type-label">overline</span>
+        <span style="font-family:var(--font-ui);font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--color-brand)">Section Overline</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">caption</span>
+        <span style="font-size:var(--text-xs);color:var(--color-text-tertiary);letter-spacing:var(--tracking-wide)">Caption text and helper copy for supplementary information</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">code</span>
+        <code>const token = '--color-brand'</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     SPACING + RADIUS + SHADOW
+     ═══════════════════════════════════ -->
+<section class="space-section" id="spacing">
+  <div class="max-w-container">
+    <div class="reveal">
+      <div class="section-label"><span class="section-label-line"></span> Spacing Scale</div>
+      <h2 class="section-title mb-4">Fluid Spacing</h2>
+      <p class="section-desc">12 fluid spacing steps using <code>clamp()</code>. Generated into <code>.m-*</code> and <code>.p-*</code> utilities via SCSS <code>@each</code>.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="space-bar-wrap"><span class="space-label">--space-1</span><div class="space-track"><div class="space-fill" style="width:3%"></div></div><span class="space-val">2–4px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-2</span><div class="space-track"><div class="space-fill" style="width:6%"></div></div><span class="space-val">4–8px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-4</span><div class="space-track"><div class="space-fill" style="width:12%"></div></div><span class="space-val">10–16px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-6</span><div class="space-track"><div class="space-fill" style="width:18%"></div></div><span class="space-val">16–24px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-8</span><div class="space-track"><div class="space-fill" style="width:24%"></div></div><span class="space-val">20–32px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-12</span><div class="space-track"><div class="space-fill" style="width:36%"></div></div><span class="space-val">32–48px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-16</span><div class="space-track"><div class="space-fill" style="width:48%"></div></div><span class="space-val">40–64px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-20</span><div class="space-track"><div class="space-fill" style="width:60%"></div></div><span class="space-val">48–80px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-24</span><div class="space-track"><div class="space-fill" style="width:72%"></div></div><span class="space-val">56–96px</span></div>
+      <div class="space-bar-wrap"><span class="space-label">--space-32</span><div class="space-track"><div class="space-fill" style="width:90%"></div></div><span class="space-val">64–128px</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="visuals-section">
+  <div class="max-w-container">
+
+    <!-- Border Radius -->
+    <div class="reveal mb-12">
+      <div class="section-label mb-4"><span class="section-label-line"></span> Border Radius</div>
+      <div class="radius-grid">
+        <div><div class="radius-box" style="border-radius:0"></div><div class="radius-label">none</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-sm)"></div><div class="radius-label">sm</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-md)"></div><div class="radius-label">md</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-lg)"></div><div class="radius-label">lg</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-xl)"></div><div class="radius-label">xl</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-2xl)"></div><div class="radius-label">2xl</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-3xl)"></div><div class="radius-label">3xl</div></div>
+        <div><div class="radius-box" style="border-radius:var(--radius-full)"></div><div class="radius-label">full</div></div>
+      </div>
+    </div>
+
+    <!-- Shadows -->
+    <div class="reveal">
+      <div class="section-label mb-6"><span class="section-label-line"></span> Elevation & Shadows</div>
+      <div class="shadow-grid">
+        <div><div class="shadow-card" style="border:1px solid var(--color-border-base)"><span class="shadow-card-label">shadow-0</span></div></div>
+        <div><div class="shadow-card" style="box-shadow:var(--shadow-1)"><span class="shadow-card-label">shadow-1</span></div></div>
+        <div><div class="shadow-card" style="box-shadow:var(--shadow-2)"><span class="shadow-card-label">shadow-2</span></div></div>
+        <div><div class="shadow-card" style="box-shadow:var(--shadow-3)"><span class="shadow-card-label">shadow-3</span></div></div>
+        <div><div class="shadow-card" style="box-shadow:var(--shadow-4)"><span class="shadow-card-label">shadow-4</span></div></div>
+        <div><div class="shadow-card" style="box-shadow:var(--shadow-5)"><span class="shadow-card-label">shadow-5</span></div></div>
+        <div><div class="shadow-card" style="box-shadow:var(--shadow-brand)"><span class="shadow-card-label">shadow-brand</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CTA
+     ═══════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-bg-pattern"></div>
+  <div class="cta-content">
+    <h2>Start Building<br>Today.</h2>
+    <p>Drop <code style="background:rgba(255,255,255,.15);color:white;border-radius:4px;padding:2px 8px">_theme-components.scss</code> into your Angular 21 project and you're live.</p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      <button class="btn btn-cta-light btn-lg">⬇ Download SCSS</button>
+      <button class="btn btn-cta-ghost btn-lg">View on GitHub →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-brand">
+    <div class="brand-logo" style="width:28px;height:28px;font-size:13px">⬡</div>
+    <span style="font-family:var(--font-heading);font-size:var(--text-sm);font-weight:var(--weight-bold);color:var(--color-text-primary)">Token<span style="color:var(--color-brand)">Forge</span></span>
+  </div>
+
+  <span class="footer-copy">
+    Master Theme System · 25 Themes · Light &amp; Dark · Angular 21 · 700+ Tokens
+  </span>
+
+  <ul class="footer-links">
+    <li><a href="#themes" class="footer-link">Themes</a></li>
+    <li><a href="#components" class="footer-link">Components</a></li>
+    <li><a href="#tokens" class="footer-link">Tokens</a></li>
+    <li><a href="#typography" class="footer-link">Typography</a></li>
+  </ul>
+</footer>
+
+
+<script>
+  const html = document.documentElement;
+  let mode = 'light';
+
+  // Mode toggle
+  const modeBtn = document.getElementById('modeBtn');
+  modeBtn.addEventListener('click', () => {
+    mode = mode === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-mode', mode);
+    modeBtn.textContent = mode === 'dark' ? '☀' : '☾';
+  });
+
+  // Respect system preference
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    mode = 'dark';
+    html.setAttribute('data-mode', 'dark');
+    modeBtn.textContent = '☀';
+  }
+
+  // Theme pills
+  const pills = document.querySelectorAll('[data-t]');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      html.setAttribute('data-theme', pill.dataset.t);
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      // Cyberpunk forces dark mode
+      if (pill.dataset.t === 'cyberpunk') {
+        mode = 'dark';
+        html.setAttribute('data-mode', 'dark');
+        modeBtn.textContent = '☀';
+      }
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach(el => io.observe(el));
+
+  // Smooth nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
